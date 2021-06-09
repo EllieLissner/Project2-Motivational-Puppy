@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
     try {
         const displayQuote = await axios.get(quoteUrl)
         const displayDog = await axios.get(dogUrl)
-        console.log(displayQuote.data.text)
+
         res.render('index', {
             quote: displayQuote.data.text,
             dogPic: displayDog.data.message,
