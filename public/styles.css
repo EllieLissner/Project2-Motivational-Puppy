@@ -7,3 +7,21 @@
     width: 300px;
     object-fit: cover;
 }
+
+.myPostImg {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.myPostQuote {
+    font-size: 10px;
+}
+
+.myPostAuth {
+    font-size: 10px;
+}
+
+.wholeSavedPost {
+    display: inline-block;
+}

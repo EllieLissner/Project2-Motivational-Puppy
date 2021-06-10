@@ -1,3 +1,10 @@
-<img class="fullSize" src="<%= dogPic %>" />
-<h3><%= quote %></h3>
-<h4><%= quoteAuth %></h4>
+<form action="/" method="POST">
+    <input hidden type="text" name="dogPic" value="<%= dogPic %>" />
+    <img class="fullSize" src="<%= dogPic %>" />
+    <input hidden type="text" name="quote" value="<%= quote %>" />
+    <h3><%= quote %></h3>
+    <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
+    <h4><%= quoteAuth %></h4>
+
+<input type="submit" value="Save Poster"/>
+</form>

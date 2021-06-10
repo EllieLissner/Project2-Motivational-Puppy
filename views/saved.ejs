@@ -1,0 +1,14 @@
+<h1>Your Saved Posters</h1>
+
+<div class="wholeSavedPost">
+    <% posters.forEach((poster) => { %>
+        <img class="myPostImg" src="<%= poster.picture %>" />
+        <h3 class="myPostQuote" > <%= poster.quote %></h3>
+        <h4 class="myPostAuth"><%= poster.author %> </h4>
+        
+        <form method="POST" action="/saved/<%= poster.id %>/?_method=DELETE">
+            <!-- <input hidden type="text" name="id" value="<%= poster.id %>" /> -->
+            <input type="submit" value="Delete">
+        </form>
+    <% }) %>
+</div>
