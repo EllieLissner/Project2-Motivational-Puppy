@@ -18,15 +18,27 @@ const PORT = process.env.PORT
 app.get('/', async (req, res) => {
     const quoteUrl = 'https://api.fisenko.net/quotes'
     const dogUrl = 'https://dog.ceo/api/breeds/image/random'
-    
     try {
-        const displayQuote = await axios.get(quoteUrl)
-        const displayDog = await axios.get(dogUrl)
+        const dogResponse = await axios.get(dogUrl)
+        const quoteResponse = await axios.get(quoteUrl)
+        let displayDog = dogResponse.data.message
+        let displayQuote = quoteResponse.data.text
+        let displayAuth = quoteResponse.data.author
+    
+        if (req.query.dogPic) {
+            displayDog = req.query.dogPic
+        } 
+        
+        if (req.query.quote) {
+            displayQuote = req.query.quote
+            displayAuth = req.query.quoteAuth
+
+        }
 
         res.render('index', {
-            quote: displayQuote.data.text,
-            dogPic: displayDog.data.message,
-            quoteAuth: displayQuote.data.author
+            quote: displayQuote,
+            dogPic: displayDog,
+            quoteAuth: displayAuth
         })
     } catch (error) {
         console.log(error)
@@ -60,11 +72,25 @@ app.get('/saved', async (req, res) => {
     }
 })
 
-
+//GET /saved/edit/:id Show form to edit one poster
+app.get('/edit/:id', async (req,res) => {
+    try{
+        const poster = await db.poster.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.render('edit', {
+            poster: poster,
+            id: poster.id
+        })
+    } catch(error) {
+        console.log(error)
+    }
+})
 
 //DELETE /saved/:id delete a saved poster
 app.delete('/saved/:id', async (req, res) => {
-    console.log(req.params.id)
     try{
         const poster = await db.poster.destroy({
             where: {
@@ -77,7 +103,26 @@ app.delete('/saved/:id', async (req, res) => {
     }
 })
 
-
+//PUT //saved/:id UPDATE one poster
+    app.put('/saved/:id', async (req, res) => {
+        try{
+            const poster = await db.poster.findOne({
+                where: {
+                    id: req.params.id
+                }
+            })
+            poster.quote = req.body.quote
+            poster.author = req.body.author
+            await poster.save({
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.redirect('/saved')
+        } catch(error) {
+            console.log(error)
+        }
+    })
 
 app.listen(PORT, () => {
     console.log('...listening, recalculating, listening, recalculating...')

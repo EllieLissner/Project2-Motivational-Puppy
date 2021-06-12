@@ -1,10 +1,40 @@
-<form action="/" method="POST">
-    <input hidden type="text" name="dogPic" value="<%= dogPic %>" />
-    <img class="fullSize" src="<%= dogPic %>" />
-    <input hidden type="text" name="quote" value="<%= quote %>" />
-    <h3><%= quote %></h3>
-    <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
-    <h4><%= quoteAuth %></h4>
+<div class="container" >
+    <div class="row bg-light">
+        <div class="col" >
+            <form action="/" method="GET">
+                
+                    <input type="image" class="fullSize mx-auto" src="<%= dogPic %>" value="<%= dogPic %>" /> 
+                    <input hidden type="text" name="quote" value="<%= quote %>" />
+                    <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
+                
+            </form>
+        </div>
+    </div>
+    <div class="row bg-light">
+        <div class="text-wrap px-3 mx-auto" style="width: 500px;">
+            <h3><%= quote %></h3>
+            <h4><%= quoteAuth %></h4>
+        </div>
+    </div>
+    <div class="row bg-light">
+        <div class="col">
+            <form action="/" method="GET" class="justify-content-center">
+                <input hidden type="text" class="fullSize" name="dogPic" src="<%= dogPic %>" value="<%= dogPic %>" /> 
+                <input type="submit" value="New Quote" class="btn btn-primary"/>    
+            </form>
+        </div>
+         <div class="col" >
+            <form action="/" method="POST">
+                <input hidden type="text" class="fullSize" name="dogPic" src="<%= dogPic %>" value="<%= dogPic %>" /> 
+                <input hidden type="text" name="quote" value="<%= quote %>" />
+                <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
+                <div class="float-right">
+                    <input type="submit" value="Save Poster" class="btn btn-success"/>
+                </div>
+            </form>
+        </div>  
+    </div>
+</div>
 
-<input type="submit" value="Save Poster"/>
-</form>
+
+
