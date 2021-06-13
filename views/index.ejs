@@ -1,37 +1,43 @@
-<div class="container" >
-    <div class="row bg-light">
-        <div class="col" >
+<div class="container" style="background-color: antiquewhite;">
+    <div class="row mt-3" style="background-color: #D4A373;">
+        <div class="col pb-3 pt-5" >
+           
             <form action="/" method="GET">
-                
-                    <input type="image" class="fullSize mx-auto" src="<%= dogPic %>" value="<%= dogPic %>" /> 
-                    <input hidden type="text" name="quote" value="<%= quote %>" />
-                    <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
-                
+                <input type="image" class="fullSize mx-auto" src="<%= dogPic %>" value="<%= dogPic %>" /> 
+                <input hidden type="text" name="quote" value="<%= quote %>" />
+                <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
             </form>
+
         </div>
     </div>
-    <div class="row bg-light">
+    <div class="row pb-3" style="background-color: #D4A373;">
         <div class="text-wrap px-3 mx-auto" style="width: 500px;">
             <h3><%= quote %></h3>
             <h4><%= quoteAuth %></h4>
         </div>
     </div>
-    <div class="row bg-light">
+    <div class="row pb-3" style="background-color:#D4A373">
         <div class="col">
+
             <form action="/" method="GET" class="justify-content-center">
                 <input hidden type="text" class="fullSize" name="dogPic" src="<%= dogPic %>" value="<%= dogPic %>" /> 
-                <input type="submit" value="New Quote" class="btn btn-primary"/>    
+                <div class="text-center">
+                    <input type="submit" value="New Quote" class="btn btn-primary mx-auto"/>    
+                </div>
             </form>
+
         </div>
          <div class="col" >
+
             <form action="/" method="POST">
                 <input hidden type="text" class="fullSize" name="dogPic" src="<%= dogPic %>" value="<%= dogPic %>" /> 
                 <input hidden type="text" name="quote" value="<%= quote %>" />
                 <input hidden type="text" name="quoteAuth" value="<%= quoteAuth %>" />
-                <div class="float-right">
+                <div class="text-center">
                     <input type="submit" value="Save Poster" class="btn btn-success"/>
                 </div>
             </form>
+
         </div>  
     </div>
 </div>

@@ -1,6 +1,12 @@
-<img class="editPosterPg" src="<%= poster.picture %>" />
-<form method="POST" action="/saved/<%= poster.id %>/?_method=PUT">
-    <input class="editQuoteText" type="text" value="<%= poster.quote %>" name="quote"/>
-    <input type="text" value="<%= poster.author %>" name="author"/>
-    <input type="submit" value="Save" />
-</form>
+<div class="container">
+    <div class="row">
+        <img class="editPosterPg" src="<%= poster.picture %>" />
+    </div>
+    <div class="row">
+        <form method="POST" action="/saved/<%= poster.id %>/?_method=PUT">
+            <input class="editQuoteText" type="text" value="<%= poster.quote %>" name="quote"/>
+            <input type="text" value="<%= poster.author %>" name="author"/>
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</div>
