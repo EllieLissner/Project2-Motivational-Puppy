@@ -73,6 +73,31 @@ app.get('/saved', async (req, res) => {
     }
 })
 
+//GET /new-template show form to make a new template
+app.get('/new-template', async (req, res) => {
+    try{
+        res.render('new-template')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+//POST /new-template save new template to db
+app.post('/new-template', async (req, res) => {
+    try {
+        
+        savedTemplate = await db.template.create({
+            name: req.body.name,
+            text_position: req.body['text-postion'],
+            font_color: req.body.font_color,
+            font: req.body.font
+        })
+        res.redirect('saved')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 //GET /saved/edit/:id Show form to edit one poster
 app.get('/edit/:id', async (req,res) => {
     try{
