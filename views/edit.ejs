@@ -2,7 +2,7 @@
     <div class="row">
         <div class="posterOutline col-7 mx-auto py-5" style="background-color: #D4A373;">
             <img class="editPosterPg mx-auto" src="<%= poster.picture %>" />
-            <p class="quotePositionAlpha"><%= poster.quote %> <br/> -<%= poster.author %></p>
+            <p class="<%= template.name %>"><%= poster.quote %> <br/> -<%= poster.author %></p>
         </div>
     </div>
     <form method="POST" class="form-group" action="/saved/<%= poster.id %>/?_method=PUT">
@@ -25,8 +25,8 @@
             <div class="col-7 mx-auto">
                 <h3>Templates</h3>
                 <% templates.forEach((template) => { %>
-                    <label for="template.id"><%= template.name %></label>
-                    <input type="radio" id="template.id" name="template" value="<%= template.name %>"/>
+                    <label for="<%= template.id %>"><%= template.name %></label>
+                    <input type="radio" id="<%= template.id %>" name="templateId" value="<%= template.id %>" <%= template.id === poster.templateId ? 'checked' : '' %>/>
                 <% }) %>
                 <input type="submit" value="Save Template">
             </div>

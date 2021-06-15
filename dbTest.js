@@ -10,12 +10,12 @@ const template = require('./models/template')
 //     console.log(poster.get())
 // })
 
-db.template.create({
-    name: 'quotePositionOmega',
-    text_postition:'top',
-    font_color: 'white',
-    font: 'monospace'
-})
-.then(template => {
-    console.log(template.get)
-}) 
+// db.template.create({
+//     name: 'quotePositionOmega',
+//     text_postition:'top',
+//     font_color: 'white',
+//     font: 'monospace'
+// })
+// .then(template => {
+//     console.log(template.get)
+// }) 

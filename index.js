@@ -16,13 +16,13 @@ const PORT = process.env.PORT
 
 //GET / - main index of site
 app.get('/', async (req, res) => {
-    const quoteUrl = 'https://api.fisenko.net/quotes'
+    const quoteUrl = 'https://inspiration.goprogram.ai'
     const dogUrl = 'https://dog.ceo/api/breeds/image/random'
     try {
         const dogResponse = await axios.get(dogUrl)
         const quoteResponse = await axios.get(quoteUrl)
         let displayDog = dogResponse.data.message
-        let displayQuote = quoteResponse.data.text
+        let displayQuote = quoteResponse.data.quote
         let displayAuth = quoteResponse.data.author
     
         if (req.query.dogPic) {
@@ -82,11 +82,16 @@ app.get('/edit/:id', async (req,res) => {
             }
         })
         const templates = await db.template.findAll()
-        console.log(poster)
+        const template = await db.template.findOne({
+            where: {
+                id: poster.templateId
+            }
+        })
+        
         res.render('edit', {
             poster: poster,
-            id: poster.id,
-            templates: templates
+            templates: templates,
+            template: template
         })
     } catch(error) {
         console.log(error)
@@ -108,31 +113,26 @@ app.delete('/saved/:id', async (req, res) => {
 })
 
 //PUT //saved/:id UPDATE one poster
-    app.put('/saved/:id', async (req, res) => {
-        try{
-            const template = await db.template.findOne({
-                where: {
-                    id: req.body.name
-                }
-            })
-            const poster = await db.poster.findOne({
-                where: {
-                    id: req.params.id
-                }
-            })
-            template.name = req.body.name
-            poster.quote = req.body.quote
-            poster.author = req.body.author
-            await poster.save({
-                where: {
-                    id: req.params.id,
-                }
-            })
-            res.redirect('/saved')
-        } catch(error) {
-            console.log(error)
-        }
-    })
+app.put('/saved/:id', async (req, res) => {
+    try{
+        const poster = await db.poster.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        poster.quote = req.body.quote
+        poster.author = req.body.author
+        poster.templateId = req.body.templateId
+        await poster.save({
+            where: {
+                id: req.params.id,
+            }
+        })
+        res.redirect('/saved')
+    } catch(error) {
+        console.log(error)
+    }
+})
 
 app.listen(PORT, () => {
     console.log('...listening, recalculating, listening, recalculating...')
