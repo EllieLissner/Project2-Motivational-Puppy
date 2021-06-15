@@ -64,3 +64,14 @@ body {
     color: white;
 }
 
+.text_position_top {
+    top: 50px;
+}
+
+.font_color_blueviolet {
+    color: blueviolet;
+}
+
+.font_fantasy {
+    font-family: fantasy;
+}
