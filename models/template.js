@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class poster extends Model {
+  class template extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,17 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.poster.belongsTo(models.template)
+      models.template.hasMany(models.poster)
     }
   };
-  poster.init({
-    picture: DataTypes.STRING,
-    quote: DataTypes.STRING,
-    author: DataTypes.STRING,
-    templateId: DataTypes.INTEGER
+  template.init({
+    name: DataTypes.STRING,
+    text_position: DataTypes.STRING,
+    font_color: DataTypes.STRING,
+    font: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'poster',
+    modelName: 'template',
   });
-  return poster;
+  return template;
 };

@@ -51,7 +51,8 @@ app.post('/', async (req, res) => {
         savedPoster = await db.poster.create({
             picture: req.body.dogPic,
             quote: req.body.quote,
-            author: req.body.quoteAuth
+            author: req.body.quoteAuth,
+            templateId: 1
         })
        res.redirect('saved') 
     } catch (error) {
@@ -80,9 +81,12 @@ app.get('/edit/:id', async (req,res) => {
                 id: req.params.id
             }
         })
+        const templates = await db.template.findAll()
+        console.log(poster)
         res.render('edit', {
             poster: poster,
-            id: poster.id
+            id: poster.id,
+            templates: templates
         })
     } catch(error) {
         console.log(error)
@@ -106,16 +110,22 @@ app.delete('/saved/:id', async (req, res) => {
 //PUT //saved/:id UPDATE one poster
     app.put('/saved/:id', async (req, res) => {
         try{
+            const template = await db.template.findOne({
+                where: {
+                    id: req.body.name
+                }
+            })
             const poster = await db.poster.findOne({
                 where: {
                     id: req.params.id
                 }
             })
+            template.name = req.body.name
             poster.quote = req.body.quote
             poster.author = req.body.author
             await poster.save({
                 where: {
-                    id: req.params.id
+                    id: req.params.id,
                 }
             })
             res.redirect('/saved')

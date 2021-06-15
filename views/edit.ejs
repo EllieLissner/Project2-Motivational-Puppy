@@ -1,12 +1,35 @@
 <div class="container">
     <div class="row">
-        <img class="editPosterPg" src="<%= poster.picture %>" />
+        <div class="posterOutline col-7 mx-auto py-5" style="background-color: #D4A373;">
+            <img class="editPosterPg mx-auto" src="<%= poster.picture %>" />
+            <p class="quotePositionAlpha"><%= poster.quote %> <br/> -<%= poster.author %></p>
+        </div>
     </div>
-    <div class="row">
-        <form method="POST" action="/saved/<%= poster.id %>/?_method=PUT">
-            <input class="editQuoteText" type="text" value="<%= poster.quote %>" name="quote"/>
-            <input type="text" value="<%= poster.author %>" name="author"/>
-            <input type="submit" value="Save" />
-        </form>
-    </div>
+    <form method="POST" class="form-group" action="/saved/<%= poster.id %>/?_method=PUT">
+        <div class="row">
+            <div class="posterOutline col-7 mx-auto pb-3 " >
+                    <textarea class="editQuoteText mx-auto form-control " type="text" value="<%= poster.quote %>" name="quote" rows="3"><%= poster.quote %></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7 mx-auto pb-2" style="background-color: #D4A373;" >
+                <textarea class="editQuoteAuth col-4 mx-auto form-control text-center" type="text" value="<%= poster.author %>" name="author" rows="1"><%= poster.author %></textarea>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-7 mx-auto mt-2">
+                <input class="mx-auto" type="submit" value="Keep this Quote and Author" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7 mx-auto">
+                <h3>Templates</h3>
+                <% templates.forEach((template) => { %>
+                    <label for="template.id"><%= template.name %></label>
+                    <input type="radio" id="template.id" name="template" value="<%= template.name %>"/>
+                <% }) %>
+                <input type="submit" value="Save Template">
+            </div>
+        </div>
+    </form>
 </div>

@@ -12,10 +12,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       quote: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       author: {
         type: Sequelize.STRING
+      },
+      templateId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
