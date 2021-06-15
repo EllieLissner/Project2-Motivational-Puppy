@@ -1,18 +1,32 @@
-<h1>Your Saved Posters</h1>
-
-<div class="wholeSavedPost">
-    <div>
-        <% posters.forEach((poster) => { %>
-                <a href="edit/<%= poster.id %>" >
-                    <img class="myPostImg img-thumbnail float-left" src="<%= poster.picture %>" />
-                </a>
-                <h3 class="myPostQuote" > <%= poster.quote %></h3>
-                <h4 class="myPostAuth"><%= poster.author %> </h4>
-                
-                <form method="POST" action="/saved/<%= poster.id %>/?_method=DELETE">
-                    <!-- <input hidden type="text" name="id" value="<%= poster.id %>" /> -->
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </form>
+<div class="container">
+    <div class="row">
+        <div class="col 7 mx-auto">
+            <h1>Your Saved Posters</h1>
+        </div>
+    </div> 
+    <div class="row">
+        <div class="col-7 mx auto d-inline-flex flex-row ">
+            <% posters.forEach((poster) => { %>
+                <div class="mx-4">
+                    <div class="row">
+                        <a href="edit/<%= poster.id %>" >
+                            <img class="myPostImg" src="<%= poster.picture %>" />
+                        </a>
+                    </div>
+                    <div class="row">
+                        <h3 class="myPostQuote" > <%= poster.quote %></h3>
+                    </div>
+                    <div class="row">
+                        <h4 class="myPostAuth"><%= poster.author %> </h4>
+                    </div>
+                    <div class="row">
+                        <form method="POST" action="/saved/<%= poster.id %>/?_method=DELETE">
+                            <!-- <input hidden type="text" name="id" value="<%= poster.id %>" /> -->
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </div>
+                </div>
             <% }) %>
         </div>
+    </div>
 </div>

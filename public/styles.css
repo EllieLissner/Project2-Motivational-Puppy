@@ -8,6 +8,10 @@ body {
     object-fit: cover;
 }
 
+.wholeSavedPost {
+    display: inline;
+}
+
 .myPostImg {
     height: 100px;
     width: 100px;
@@ -16,6 +20,7 @@ body {
 
 .myPostQuote {
     font-size: 10px;
+    width: 100px;
 }
 
 .myPostAuth {
@@ -65,13 +70,72 @@ body {
 }
 
 .text_position_top {
-    top: 50px;
+    top: 100px;
+    left: 30px;
+    width: 500px;
+    position:absolute;
 }
 
-.font_color_blueviolet {
-    color: blueviolet;
+.text_position_bottom {
+    top: 500px;
+    left: 30px;
+    width: 500px;
+    position: absolute;
+}
+
+.text_position_left {
+    top:100px;
+    left: 30px;
+    width: 100px;
+    position: absolute;
+}
+
+.text_position_right {
+    top: 100px;
+    left: 400px;
+    width: 100px;
+    position: absolute;
+}
+
+.text_position_middle {
+    top: 300px;
+    left: 100px;
+    width: 400px;
+    position: absolute;
+}
+
+.font_color_black {
+    color: black;
+}
+
+.font_color_blue {
+    color:blue;
+}
+
+.font_color_white {
+    color: white;
+}
+
+.font_color_green {
+    color: green;
 }
 
 .font_fantasy {
     font-family: fantasy;
+}
+
+.font_serif {
+    font-family: serif;
+}
+
+.font_sans-serif {
+    font-family: sans-serif;
+}
+
+.font_cursive {
+    font-family: cursive;
+}
+
+.font_monospace {
+    font-family: monospace;
 }

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="posterOutline col-7 mx-auto py-5" style="background-color: #D4A373;">
             <img class="editPosterPg mx-auto" src="<%= poster.picture %>" />
-            <p class="<%= template.name %>"><%= poster.quote %> <br/> -<%= poster.author %></p>
+            <p class="<%= template.text_position %> <%= template.font_color %> <%= template.font %>"><%= poster.quote %> <br/> -<%= poster.author %></p>
         </div>
     </div>
     <form method="POST" class="form-group" action="/saved/<%= poster.id %>/?_method=PUT">
@@ -39,4 +39,11 @@
             </div>
         </div>
     </form>
+    <div class="row">
+        <div class="col-7 mx-auto mb-5">
+            <a href="/new-template">
+                New Template
+            </a>
+        </div>
+    </div>
 </div>
