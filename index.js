@@ -16,13 +16,13 @@ const PORT = process.env.PORT
 
 //GET / - main index of site
 app.get('/', async (req, res) => {
-    const quoteUrl = 'https://inspiration.goprogram.ai'
+    const quoteUrl = 'https://api.fisenko.net/quotes'
     const dogUrl = 'https://dog.ceo/api/breeds/image/random'
     try {
         const dogResponse = await axios.get(dogUrl)
         const quoteResponse = await axios.get(quoteUrl)
         let displayDog = dogResponse.data.message
-        let displayQuote = quoteResponse.data.quote
+        let displayQuote = quoteResponse.data.text
         let displayAuth = quoteResponse.data.author
     
         if (req.query.dogPic) {
