@@ -153,7 +153,7 @@ app.put('/saved/:id', async (req, res) => {
                 id: req.params.id,
             }
         })
-        res.redirect('/saved')
+        res.redirect(`/edit/${req.params.id}`)
     } catch(error) {
         console.log(error)
     }

@@ -35,14 +35,15 @@
                     <label for="<%= template.id %>"><%= template.name %></label>
                     <input type="radio" id="<%= template.id %>" name="templateId" value="<%= template.id %>" <%= template.id === poster.templateId ? 'checked' : '' %>/>
                 <% }) %>
-                <input type="submit" value="Save Template">
+                <input type="submit" value="Apply Template">
             </div>
         </div>
     </form>
     <div class="row">
         <div class="col-7 mx-auto mb-5">
+            Not a fan of the available templates?
             <a href="/new-template">
-                New Template
+                Make your own!
             </a>
         </div>
     </div>
