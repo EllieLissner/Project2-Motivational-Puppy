@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 
 let db = require('./models')
 const poster = require('./models/poster')
+const template = require('./models/template')
 const app = express()
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
@@ -48,11 +49,12 @@ app.get('/', async (req, res) => {
 //POST /saved  receive the photo, quote and author and add to database
 app.post('/', async (req, res) => {
     try{
-        savedPoster = await db.poster.create({
+
+        await db.poster.create({
             picture: req.body.dogPic,
             quote: req.body.quote,
             author: req.body.quoteAuth,
-            templateId: 7
+            templateId: 3
         })
        res.redirect('saved') 
     } catch (error) {
