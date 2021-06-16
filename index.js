@@ -48,11 +48,12 @@ app.get('/', async (req, res) => {
 //POST /saved  receive the photo, quote and author and add to database
 app.post('/', async (req, res) => {
     try{
+        templates = await db.template.findAll()
         savedPoster = await db.poster.create({
             picture: req.body.dogPic,
             quote: req.body.quote,
             author: req.body.quoteAuth,
-            templateId: 7
+            templateId: templates[0].id
         })
        res.redirect('saved') 
     } catch (error) {
