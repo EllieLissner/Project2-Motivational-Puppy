@@ -52,7 +52,7 @@ app.post('/', async (req, res) => {
             picture: req.body.dogPic,
             quote: req.body.quote,
             author: req.body.quoteAuth,
-            templateId: 1
+            templateId: 7
         })
        res.redirect('saved') 
     } catch (error) {

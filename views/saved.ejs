@@ -6,9 +6,9 @@
         </div>
     </div> 
     <div class="row">
-        <div class="col-7 mx-auto d-inline-flex flex-row ">
+        <div class="col-7 mx-auto d-inline-flex flex-row flex-wrap">
             <% posters.forEach((poster) => { %>
-                <div class="mx-4">
+                <div class="mx-4 my-5">
                     <div class="row">
                         <a href="edit/<%= poster.id %>" >
                             <img class="myPostImg" src="<%= poster.picture %>" />
